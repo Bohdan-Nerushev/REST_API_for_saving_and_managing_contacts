@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "contact-api"
+version = "0.1.0"
+description = ""
+authors = ["Lenovo <bogdannerushev@gmail.com>"]
+readme = "README.md"
+packages = [{include = "contact_api", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+sqlalchemy = "^2.0.35"
+uvicorn = "^0.30.6"
+pydantic = "^2.9.2"
+python-dotenv = "^1.0.1"
+pyjwt = "^2.9.0"
+passlib = "^1.7.4"
+bcrypt = "^4.2.0"
+cloudinary = "^1.41.0"
+python-jose = "^3.3.0"
+faker = "^29.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+sphinx = "^8.0.2"
+sphinx-autodoc-typehints = "^2.4.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

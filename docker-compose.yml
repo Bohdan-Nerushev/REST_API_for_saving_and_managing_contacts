@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: nouchka/sqlite3
+    volumes:
+      - ./data:/data
+    environment:
+      SQLITE_DATABASE_URL: sqlite:///data/test.db
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=sqlite:///./data/test.db
+      - SECRET_KEY=your-secret-key
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - CLOUDINARY_CLOUD_NAME=your-cloud-name
+      - CLOUDINARY_API_KEY=your-api-key
+      - CLOUDINARY_API_SECRET=your-api-secret
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  redis:
+    image: redis:latest
